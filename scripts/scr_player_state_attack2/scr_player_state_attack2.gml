@@ -19,31 +19,32 @@ function scr_player_state_attack2(){
 	if (key_attack_pressed) {
 		switch (attack_count) {
 			case 0:
-				state = STATE.ATTACK1;
+				state = PLAYER_STATE.ATTACK1;
 				attack_count++;
 				vspd = 0;
 				hspd = 0;
 				break;
 			case 1:
-				state = STATE.ATTACK2;
+				state = PLAYER_STATE.ATTACK2;
 				attack_count++;
 				
 				if (att != noone) {
 					att.attack_count = attack_count;
 					att.frames = ATT_FRAMES.SECOND;
 					att.creator = id;
+					att.damage = damage/2;
 				}
 				vspd = 0;
 				hspd = 0;
-	
 				break;
 			case 2:
-				state = STATE.ATTACK3;
+				state = PLAYER_STATE.ATTACK3;
 				attack_count++;
 				if (att != noone) {
 					att.attack_count = attack_count;
 					att.frames = ATT_FRAMES.THIRD;
 					att.creator = id;
+					att.damage = damage * 2;
 				}
 				vspd = 0;
 				hspd = 0;

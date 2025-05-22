@@ -1,11 +1,17 @@
 /// @description 
 
+global.player = id;
+
 hspd = 0;
 vspd = 0;
-grav = 0.5;
+grav = GRAVITY;
 movespd = 2;
 runspd = 1.5;
 jumpspeed = 10;
+
+hp = 100;
+damage = 10;
+
 
 onfloor = place_meeting(x, y+1, obj_wall);
 
@@ -24,14 +30,14 @@ enum ATT_FRAMES {
 }
 
 // state machine
-enum STATE {
+enum PLAYER_STATE {
 	NORMAL,
 	ATTACK1,
 	ATTACK2,
 	ATTACK3
 }
 
-state = STATE.NORMAL;
+state = PLAYER_STATE.NORMAL;
 
 
 
