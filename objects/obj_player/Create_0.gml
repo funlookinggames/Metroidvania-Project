@@ -22,6 +22,8 @@ attack_count = 0;
 maxattack = 3;
 facing = "right";
 att = noone;
+flash = -1;
+flashing = false;
 
 enum ATT_FRAMES {
 	FIRST = 25,
@@ -34,7 +36,8 @@ enum PLAYER_STATE {
 	NORMAL,
 	ATTACK1,
 	ATTACK2,
-	ATTACK3
+	ATTACK3,
+	HIT
 }
 
 state = PLAYER_STATE.NORMAL;

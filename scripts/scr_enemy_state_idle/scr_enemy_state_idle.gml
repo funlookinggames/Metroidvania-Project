@@ -5,6 +5,7 @@ function scr_enemy_state_idle(){
 	
 	if (not onfloor) {
 		vspd += grav;
+		state = ENEMY_STATE.IDLE;
 	}
 	
 	if (distance_to_point(create_x, y) > 30) {

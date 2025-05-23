@@ -1,5 +1,7 @@
 ///@description State Machine
 
+onfloor = place_meeting(x, y+1, obj_wall);
+
 switch (state) {
 	case PLAYER_STATE.NORMAL:
 		scr_player_state_normal();
@@ -12,5 +14,8 @@ switch (state) {
 		break;
 	case PLAYER_STATE.ATTACK3:
 		scr_player_state_attack3();
+		break;
+	case PLAYER_STATE.HIT:
+		scr_player_state_hit();
 		break;
 }

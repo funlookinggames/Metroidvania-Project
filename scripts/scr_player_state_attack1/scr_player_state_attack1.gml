@@ -40,6 +40,12 @@ function scr_player_state_attack1(){
 				attack_count++;
 				
 				if (att != noone) {
+					instance_destroy(att);
+					if (facing == "right") {
+						att = instance_create_depth(x+32, y, depth-1, obj_hitbox);
+					} else {
+						att = instance_create_depth(x-32, y, depth-1, obj_hitbox);	
+					}
 					att.attack_count = attack_count;
 					att.frames = ATT_FRAMES.SECOND;
 					att.creator = id;
@@ -52,6 +58,12 @@ function scr_player_state_attack1(){
 				state = PLAYER_STATE.ATTACK3;
 				attack_count++;
 				if (att != noone) {
+					instance_destroy(att);
+					if (facing == "right") {
+						att = instance_create_depth(x+32, y, depth-1, obj_hitbox);
+					} else {
+						att = instance_create_depth(x-32, y, depth-1, obj_hitbox);	
+					}
 					att.attack_count = attack_count;
 					att.frames = ATT_FRAMES.THIRD;
 					att.creator = id;

@@ -5,6 +5,7 @@ function scr_enemy_state_alert(){
 	
 	if (not onfloor) {
 		vspd += grav;
+		state = ENEMY_STATE.IDLE;
 	}
 	
 
