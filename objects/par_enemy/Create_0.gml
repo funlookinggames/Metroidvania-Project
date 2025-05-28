@@ -8,10 +8,10 @@ runspd = 1.5;
 jumpspeed = 5;
 
 hp = 300;
-damage = 5;
+damage = 20;
 stunbar = 0;
 flash = -1;
-stun_start = 500;
+stun_start = 50;
 stun = stun_start;
 
 timer_start = 60;

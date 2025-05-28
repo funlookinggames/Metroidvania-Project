@@ -9,7 +9,15 @@ if (hits > 0) {
 			ds_list_add(hit, hitID);
 			hitID.hp -= damage;
 			hitID.flash = 10;
-			hitID.state = PLAYER_STATE.HIT;
+			if (hitID.invulnerable) or (hitID.parrying) {
+				if (hitID.parrying) {
+					creator.stun -= hitID.parry_stundmg;
+					hitID.parry = true;
+					instance_destroy();
+				}
+			} else {
+				hitID.state = PLAYER_STATE.HIT;	
+			}
 		}
 	}
 }

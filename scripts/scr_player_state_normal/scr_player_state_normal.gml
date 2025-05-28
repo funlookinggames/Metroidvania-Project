@@ -1,14 +1,7 @@
-// Script assets have changed for v2.3.0 see
-// https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_state_normal(){
-	// --- Get Input --- 
-	scr_player_get_input();
-	
-
 	// --- movement variables ---
 	var move = key_right - key_left;
 	var run = key_run * runspd;
-	onfloor = place_meeting(x, y+1, obj_wall);
 
 	//Direction code
 	if (move != 0) {
@@ -50,8 +43,10 @@ function scr_player_state_normal(){
 		coyote = -1;
 	}
 
-	// Attack code
+	// Combat Code
 	if (onfloor) {
+		
+		// Attack Code
 		if (key_attack_pressed) {
 			switch (attack_count) {
 				case 0:
@@ -73,6 +68,37 @@ function scr_player_state_normal(){
 					hspd = 0;
 					break;
 			}
+		}
+		
+		// Dodge Code
+		if (key_dodge_pressed) {
+			state = PLAYER_STATE.DODGE;
+			dodge_direction = move;
+			if (move != 0) {
+				dodge_timer = global.gamespd/2;
+			} else {
+				dodge_timer = global.gamespd/2.5;
+			}
+			hspd *= 2;
+		}
+		
+		// Parry Code
+		if (key_parry_pressed) {
+			state = PLAYER_STATE.PARRY;
+			parry_timer = parry_start;
+		}
+		
+		// Heal code
+		if (key_heal_pressed) {
+			state = PLAYER_STATE.HEAL;
+			heal = 0;
+		}
+		
+	// If Not on floor	
+	} else {
+		if (key_attack_pressed) {
+			state = PLAYER_STATE.AIR;
+			att = noone;
 		}
 	}
 	// Collision

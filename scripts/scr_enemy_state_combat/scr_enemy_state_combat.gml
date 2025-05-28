@@ -15,7 +15,7 @@ function scr_enemy_state_combat(){
 		image_xscale = 1; 
 	}
 	
-	if (distance_to_object(global.player) > 25) {
+	if (distance_to_object(global.player) > 25) and (att_timer > timer_start/3) {
 		if (facing == "left") {
 			move = -1;
 		} else {
