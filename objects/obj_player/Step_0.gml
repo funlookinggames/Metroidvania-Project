@@ -6,6 +6,9 @@ scr_player_get_input();
 // --- Check if on floor ---
 onfloor = place_meeting(x, y+1, obj_wall);
 
+// Execute animation
+sprite_index = animation;
+
 switch (state) {
 	case PLAYER_STATE.NORMAL:
 		scr_player_state_normal();
@@ -35,3 +38,4 @@ switch (state) {
 		scr_player_state_attack_air();
 		break;
 }
+

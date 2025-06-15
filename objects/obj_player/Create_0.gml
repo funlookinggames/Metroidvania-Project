@@ -8,10 +8,10 @@ global.gamespd = game_get_speed(gamespeed_fps);
 hspd = 0;
 vspd = 0;
 grav = GRAVITY;
-movespd_init = 2;
+movespd_init = 1;
 movespd = movespd_init;
-runspd = 1.5;
-jumpspeed = 10;
+runspd = .5;
+jumpspeed = 5;
 
 jumpbuffer = -1;
 coyote = -1; 
@@ -24,7 +24,7 @@ dodge_direction = 1;
 dodge_timer = 0;
 dodgestart = 6;
 dodgespd = dodgestart;
-dodgedecel = .3;
+dodgedecel = .20;
 
 // Parry variables
 parrying = false;
@@ -34,8 +34,9 @@ parry_start = 5;
 parry_timer = parry_start;
 
 // Healing variables
-heal = 0;
-healvalue = 30;
+heal = 30;
+healed = false;
+stopped = false;
 
 // Main Balance Variables;
 maxhp = 100;
@@ -49,12 +50,13 @@ facing = "right";
 att = noone;
 flash = -1;
 flashing = false;
+frames = 0;
 
 enum ATT_FRAMES {
-	FIRST = 15,
-	SECOND = 15,
-	THIRD = 30,
-	AIR = 15
+	FIRST = 8,
+	SECOND = 8,
+	THIRD = 12,
+	AIR = 8
 }
 
 // state machine
@@ -72,7 +74,8 @@ enum PLAYER_STATE {
 
 state = PLAYER_STATE.NORMAL;
 
-
+// Animation variables
+animation = sprite_index;
 
 
 

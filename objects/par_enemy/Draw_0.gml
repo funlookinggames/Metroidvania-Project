@@ -6,7 +6,7 @@ if (flash > 0) {
 }
 draw_self();
 gpu_set_fog(false, c_white, 0, 0);	
-draw_text(x, y - 32, string(stun));
+draw_text(x, y - 64, string(att_timer));
 
 
 

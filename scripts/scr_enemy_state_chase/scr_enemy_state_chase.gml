@@ -6,14 +6,22 @@ function scr_enemy_state_chase(){
 	if (not onfloor) {
 		vspd += grav;
 		state = ENEMY_STATE.IDLE;
+	} else {
+		if (hspd == 0) {
+			sprite_index = spr_skeleton_idle;
+			image_speed = .25;	
+		} else {
+			sprite_index = spr_skeleton_run;
+			image_speed = .5;
+		}
 	}
 	
 	if (global.player.x < x) {
 		facing = "left";
-		image_xscale = -1;
+		image_xscale = 1;
 	} else {
 		facing = "right";
-		image_xscale = 1; 
+		image_xscale = -1; 
 	}
 	
 	if (distance_to_object(global.player) > 50) {
@@ -24,7 +32,6 @@ function scr_enemy_state_chase(){
 		}
 	} else {
 		state = ENEMY_STATE.COMBAT;
-		att_timer = timer_start;
 	}
 	
 	if (distance_to_object(global.player) > 200) {

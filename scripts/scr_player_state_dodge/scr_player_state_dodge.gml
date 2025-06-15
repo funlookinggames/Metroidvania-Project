@@ -6,6 +6,10 @@ function scr_player_state_dodge(){
 	}
 	var move = 0;
 	
+	frames+=.25;
+	image_index = frames;
+	
+	
 	// Gravity
 	if (not onfloor) {
 		vspd += grav;
@@ -18,6 +22,8 @@ function scr_player_state_dodge(){
 		dodgedecel *= 1.25;
 	}
 	
+	
+	
 	// execute movement
 	move = dodge_direction;
 	hspd = (dodgespd) * move;
@@ -25,7 +31,6 @@ function scr_player_state_dodge(){
 	// Dodge de-celeration
 	if (dodgespd > 0) dodgespd -= dodgedecel;
 	if (dodgespd < 0) dodgespd += dodgedecel;
-	show_debug_message(string(dodgespd));
 	
 	// Dodge timer
 	if (dodge_timer > 0) {
@@ -34,7 +39,7 @@ function scr_player_state_dodge(){
 		state = PLAYER_STATE.NORMAL;
 		invulnerable = false;
 		dodgespd = dodgestart;
-		dodgedecel = .3;
+		dodgedecel = .20;
 	}
 	
 	// Collision

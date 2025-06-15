@@ -5,14 +5,28 @@ function scr_enemy_state_combat(){
 	
 	if (not onfloor) {
 		vspd += grav;
+	} else {
+		if (hspd == 0) {
+			sprite_index = spr_skeleton_idle;
+			image_speed = .25;	
+		} else {
+			sprite_index = spr_skeleton_run;
+			image_speed = .25;
+		}
 	}
 	
 	if (global.player.x < x) {
 		facing = "left";
-		image_xscale = -1;
+		image_xscale = 1;
 	} else {
 		facing = "right";
-		image_xscale = 1; 
+		image_xscale = -1; 
+	}
+	
+	if (att_timer > timer_start/3) {
+		canflinch = true;
+	} else {
+		canflinch = false;	
 	}
 	
 	if (distance_to_object(global.player) > 25) and (att_timer > timer_start/3) {
@@ -22,13 +36,18 @@ function scr_enemy_state_combat(){
 			move = 1;
 		}
 		att_timer = timer_start; // reset attack timer back to full
+
 	} else {
 		move = 0;
 		if (att_timer > 0) {
 			att_timer--;
 		} else {
-			state = ENEMY_STATE.ATTACK;	
+			state = ENEMY_STATE.ATTACK1;
+			sprite_index = spr_skeleton_attack1;
+			image_speed = 0;
+			image_index = 0;
 		}
+		
 	}
 	
 	if (distance_to_object(global.player) > 70) {

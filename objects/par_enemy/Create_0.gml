@@ -7,7 +7,7 @@ movespd = 2;
 runspd = 1.5;
 jumpspeed = 5;
 
-hp = 300;
+hp = 100;
 damage = 20;
 stunbar = 0;
 flash = -1;
@@ -26,14 +26,21 @@ onfloor = place_meeting(x, y+1, obj_wall);
 create_x = x;
 create_y = y;
 
+canflinch = true;
+
 enum ENEMY_STATE {
 	IDLE,
 	CHASE,
 	ALERT,
 	COMBAT,
-	ATTACK,
-	STUN
+	ATTACK1,
+	ATTACK2,
+	FLINCH,
+	STUN,
+	DEATH
 }
+attackfollowup = false;
+laststate = ENEMY_STATE.IDLE;
 
 state = ENEMY_STATE.IDLE;
 

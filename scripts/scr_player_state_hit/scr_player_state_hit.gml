@@ -2,6 +2,8 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_player_state_hit(){
 	
+	animation = spr_player_hurt;
+	
 	// if hit during a dodge, reset dodge variables
 	invulnerable = false;
 	dodgespd = dodgestart;

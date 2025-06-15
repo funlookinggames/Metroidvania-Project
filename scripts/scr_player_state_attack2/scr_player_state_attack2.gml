@@ -5,8 +5,15 @@ function scr_player_state_attack2(){
 		vspd += grav;
 		state = PLAYER_STATE.NORMAL;
 	}
-	
-	// create attack
+
+	// animation
+	if (onfloor) {
+		animation = spr_player_attack2;
+		image_speed = 1;
+	}
+
+	frames += .25;
+	image_index = frames;
 	
 	
 	// check if combo-ed
@@ -30,7 +37,7 @@ function scr_player_state_attack2(){
 						att = instance_create_depth(x-32, y, depth-1, obj_hitbox);	
 					}
 					att.attack_count = attack_count;
-					att.frames = ATT_FRAMES.SECOND;
+					att.frames = ATT_FRAMES.SECOND-.25;
 					att.creator = id;
 					att.damage = damage/2;
 				}
@@ -48,12 +55,15 @@ function scr_player_state_attack2(){
 						att = instance_create_depth(x-32, y, depth-1, obj_hitbox);	
 					}
 					att.attack_count = attack_count;
-					att.frames = ATT_FRAMES.THIRD;
+					att.frames = ATT_FRAMES.THIRD -.25;
 					att.creator = id;
 					att.damage = damage * 2;
 				}
+				animation = spr_player_attack3;
+				image_speed = 0;
 				vspd = 0;
 				hspd = 0;
+				frames = 0;
 				break;
 		}
 	}

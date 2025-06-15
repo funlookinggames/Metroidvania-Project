@@ -9,6 +9,14 @@ if (hits > 0) {
 			ds_list_add(hit, hitID);
 			hitID.hp -= damage;
 			hitID.flash = 10;
+			if (object_is_ancestor(hitID.object_index, par_enemy)) {
+				if (hitID.canflinch) {
+					hitID.state = ENEMY_STATE.FLINCH;
+					hitID.sprite_index = spr_skeleton_hit;
+					hitID.image_speed = .0;
+					hitID.image_index = 0;
+				}
+			}
 			if (hitID.state != ENEMY_STATE.STUN) hitID.stun -= damage;
 		}
 	}

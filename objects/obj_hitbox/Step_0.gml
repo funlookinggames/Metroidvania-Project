@@ -1,7 +1,7 @@
 /// @description 
 
 if (frames > 0) {
-	frames--;
+	frames -= .25;
 } else {
 	creator.state = PLAYER_STATE.NORMAL;
 	creator.att = noone;

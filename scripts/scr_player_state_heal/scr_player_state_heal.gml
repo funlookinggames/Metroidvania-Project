@@ -9,8 +9,19 @@ function scr_player_state_heal(){
 		if (move < 0) facing = "left";
 	}
 
+	if (movespd <= 0) and (!stopped) {
+		animation = spr_player_heal;
+		image_speed = 1;
+		stopped = true;
+		frames = 0;
+	}
+
 	// --- movement code ---
-	hspd = (movespd) * move; 
+	if (!stopped){
+		hspd = (movespd) * move; 
+	} else {
+		hspd = 0;
+	}
 	
 	// Gravity
 	if (not onfloor) {
@@ -19,26 +30,18 @@ function scr_player_state_heal(){
 	
 	
 	// Heal and movement code
-	if (movespd > 0) {
+	if (hspd >= 0)  {
 		movespd -= dodgedecel/2;
 	} else {
 		movespd = 0;
-		if (heal < healvalue) {
-			heal += .5;	
-		} else {
-			if (hp + heal < maxhp) {
-				hp += heal;
-			} else {
-				hp = maxhp;	
-			}
-			state = PLAYER_STATE.NORMAL;
-			movespd = movespd_init;
-			heal = 0;
+		if (image_index >= 14) {	
+			if (!healed) hp += heal; healed = true;
 		}
 	}
 	
 	
-	
 	//Collision
 	scr_collision_code();
+	
+
 }

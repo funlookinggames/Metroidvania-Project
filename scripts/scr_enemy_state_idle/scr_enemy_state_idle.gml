@@ -6,6 +6,14 @@ function scr_enemy_state_idle(){
 	if (not onfloor) {
 		vspd += grav;
 		state = ENEMY_STATE.IDLE;
+	} else {
+		if (hspd == 0) {
+			sprite_index = spr_skeleton_idle;
+			image_speed = .25;	
+		} else {
+			sprite_index = spr_skeleton_run;
+			image_speed = .5;
+		}
 	}
 	
 	if (distance_to_point(create_x, y) > 30) {
@@ -23,7 +31,7 @@ function scr_enemy_state_idle(){
 		image_xscale = move;
 	}
 	
-	if (image_xscale > 0) {
+	if (image_xscale < 0) {
 		facing = "right";	
 	} else {
 		facing = "left";

@@ -20,7 +20,7 @@
   "height": 32,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"2cb6f60b-b303-48ae-b9ef-196e392c7918","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"2cb6f60b-b303-48ae-b9ef-196e392c7918","blendMode":0,"displayName":"default","isLocked":false,"opacity":30.0,"visible":true,},
   ],
   "nineSlice": null,
   "origin": 0,
